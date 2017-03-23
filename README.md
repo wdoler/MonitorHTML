@@ -1,15 +1,15 @@
 # MonitorHTML
 This python script will go through a list of websites, find a HTML xpath tag, get all of the text inside of that tag, and return that data and the date for when the program found it. If there are changes, then it will email a user the changes aswell as a list of everything it has found.
 
-  Input: two json files
-      1) list of websites to monitor (monitorWebsites.json)
-      * the script will fill out the "found" section
-      2) Email address and password (passwords.json)
+## Input: two json files
+1. list of websites to monitor (monitorWebsites.json)
+..* the script will fill out the "found" section
+2. Email address and password (passwords.json)
 
-  Todo: change to OOP
+### Todo: change to OOP
 
-Format for monitorWebsites.json :
-
+## Format for monitorWebsites.json
+```json
 {
     "Websites": {
         "uniqueID_0": {
@@ -28,11 +28,12 @@ Format for monitorWebsites.json :
         }
     }
 }
-
-Format for passwords.json :
-
+```
+## Format for passwords.json :
+```json
 {
     "gmail_user": "xyz@gmail.com",
     "gmail_password": "reallyBadPractice",
     "to": ["xyz@gmail.com"]
 }
+```
