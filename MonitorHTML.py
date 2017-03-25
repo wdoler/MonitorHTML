@@ -7,6 +7,7 @@ import requests
 from datetime import date
 import smtplib
 import re
+import string
 
 #######################################################################
 #   
@@ -49,6 +50,7 @@ def getExpired(dictNew, dictOld):
     return remove
 
 def addList(newList, dictOld):
+    today = date.today()
     for item in newList:
         dictOld.update({item:today.strftime("%m-%d-%Y")})
 
@@ -72,9 +74,10 @@ def getList(url,tagToFind):
 
 def scrubList(titles,regexString):
     scrubbedList = []
+    # remove non-ascii from string
+    printable = set(string.printable)
+    filter(lambda y: y in printable, titles)
     for x in titles:
-        x = re.sub(r'([^-a-zA-Z\d\s:])','',str(x))
-        #print("'"+x+"'\n")
         if(re.search(regexString,x)!=None):
             scrubbedList.append(x)
     return scrubbedList
@@ -131,7 +134,6 @@ for key in siteData["Websites"]:
     find = siteData["Websites"][key]["XpathSearch"]
     print ("String to find: "+find)
     titles = getList(url,find)
-    today = date.today()
     
     scrubbedList = scrubList(titles,siteData["Websites"][key]["regexFilter"])
     allDict[key] = scrubbedList
