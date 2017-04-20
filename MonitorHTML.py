@@ -28,8 +28,8 @@ import string
 #
 #######################################################################
 
-inputWebsiteTxt = 'monitorWebsites.json'
-passwordsTxt = 'passwords.json'
+inputWebsiteTxt = '/home/pi/MonitorHTML/monitorWebsites.json'
+passwordsTxt = '/home/pi/MonitorHTML/passwords.json'
 
 def getNew(dictNew, dictOld):
     difference = []
